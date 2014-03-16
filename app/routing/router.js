@@ -108,7 +108,6 @@ Router.map(function () {
       return [
       this.subscribe('projects'),
       this.subscribe('comments'),
-      this.subscribe('tasks'),
       this.subscribe('offers')];
     },
     after: function() { GAnalytics.pageview('/stats'); }

@@ -18,22 +18,27 @@ Template.stats.rendered = function() {
 	var data = last30days(Projects, datekey);
 	plotPerDay(data, 'projects', datekey);
 	// user plot
-	var datekey = 'createdAt';
-	var data = last30days(Meteor.users, datekey);
+	datekey = 'createdAt';
+	data = last30days(Meteor.users, datekey);
 	plotPerDay(data, 'users', datekey)
 	// comment plot
-	var datekey = 'postedDate';
-	var data = last30days(Comments, datekey);
+	datekey = 'postedDate';
+	data = last30days(Comments, datekey);
 	plotPerDay(data, 'comments', datekey);
+	// offers plot
+	datekey = 'madeOn';
+	data = last30days(Offers, datekey);
+	plotPerDay(data, 'offers', datekey);
 }
 
 // get entries with date in the last 30 days
 function last30days(collection, key) {
 	var now = new Date();
 	var query = {};
-	query[key] = {
-    $gte: moment().subtract('days', 30).toDate()
- 	}
+	// TODO: fix the date selection
+	// query[key] = {
+ //    $gte: moment().subtract('days', 30).toDate()
+ // 	}
 	return collection.find();
 }
 

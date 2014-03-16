@@ -16,6 +16,7 @@ Meteor.methods({
 			throw new Meteor.Error(403, "Assigned user not found.");
 
 		var attrs = {
+			postedOn: new Date(),
 			parent: projectId,
 			owner: this.userId,
 			name: task.name,
